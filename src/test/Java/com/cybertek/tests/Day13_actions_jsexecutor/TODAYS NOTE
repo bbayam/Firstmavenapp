@@ -1,0 +1,44 @@
+oday is 7/17/2019
+​
+Agenda:
+	 Actions class
+	 JavascriptExecutor
+​
+I had a small problem with saving a form.
+doubleClick() worked, but application was generating 2 exact same forms. Since I couldn't reproduce this bug manually, that bug wasn't accepted by team.
+​
+The Selenium WebDriver's Advanced User Interactions API allows us to perform operations from keyboard events and simple mouse events to complex events such as dragging and dropping, holding a key and then performing mouse operations using the Actions class, and building a complex chain of events exactly like a user doing these manually.
+​
+The Actions class implements the builder pattern to create a composite action containing a
+group of other actions.
+​
+build() -  Generates a composite action containing all actions so far, ready to be performed (and resets the internal builder state, so subsequent calls to {@link #build()} will contain fresh sequences).
+​
+We use build() before perform() when we have more than one action event.
+​
+moveToElement(element1).click(element2).build().perform();
+​
+​
+Selenium will not have any problems to find element, unless element is not in the DOM. Even though element is not visible, webdriver will find it. If element is not in the DOM, you will get NoSuchElmentException.
+​
+//VERIFY THAT COLOR WILL CHANGE
+​
+#############
+​
+By casting the WebDriver instance to a JavascriptExecutor interface, we can execute the
+JavaScript code in Selenium WebDriver:
+​
+JavascriptExecutor js = (JavascriptExecutor) driver;
+​
+In the following example, a single line of JavaScript code is executed to return the title of the page displayed in the driver.
+
+The JavascriptExecutor interface provides the
+executeScript() method to which we need to pass the JavaScript code:
+​
+String title = (String) js.executeScript("return document.title");
+​
+​
+Sometimes, we cannot click on element with default selenium method. In this case, we can use JavascriptExecutor interface and perform click.
+​
+Break till 9:15
+​
